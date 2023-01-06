@@ -48,6 +48,11 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
+        //if admin redirect to dashboard
+        if ($token->getUser()->isAdmin()) {
+            return new RedirectResponse($this->urlGenerator->generate('admin_dashboard'));
+        }
+
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('app_homepage'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
