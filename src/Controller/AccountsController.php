@@ -27,7 +27,7 @@ class AccountsController extends AbstractController
         ]);
     }
 
-    #[Route('account/{id}/delete', name: 'delete_account', methods: ['GET'])]
+    #[Route('/accounts/{id}/delete', name: 'delete_account', methods: ['GET'])]
     #[IsGranted('DELETE', subject: 'account')]
     public function delete(Account $account)
     {
